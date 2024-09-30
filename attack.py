@@ -1,6 +1,13 @@
 import shutil
 import hashlib
-# C:\Users\marco\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+import os
+
+# Find the main disk letter
+def mainDiskLetter():
+	return os.path.splitdrive(os.getcwd())[0]
+
+mainDisk = mainDiskLetter()
+
 
 f = open("test.txt", "r")
 f2 = open("test2.txt", "w")
@@ -13,3 +20,7 @@ f.close()
 f2.close()
 f3.close()
 shutil.move("test2.txt", "test.txt")
+
+# Move readme.txt to the Starup folder
+shutil.move("readme.txt", mainDisk + "\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup")
+
